@@ -1,7 +1,7 @@
 ﻿string applicationTitle = "Hello to todo app! choose an option from below list and continue \n if you want finish the app, you should enter any key";
 
 // requirement
-string[] appOptions = new string[] {"[S]how all todos", "[A]dd new todo!", "[D]elete a todo", "[U]pdate a todo", "[R]emove all todos" };
+string[] appOptions = new string[] { "[S]how all todos", "[A]dd new todo!", "[D]elete a todo", "[U]pdate a todo", "[R]emove all todos" };
 List<string> todos = new List<string>();
 string newTodoContent;
 
@@ -18,13 +18,13 @@ while (true)
     string userOptSelected = Console.ReadLine() ?? "";
 
 
-    if(userOptSelected.ToLower() == "exit")
+    if (userOptSelected.ToLower() == "exit")
     {
         break;
     }
 
 
-    if(userOptSelected == "S")
+    if (userOptSelected == "S")
     {
         LoggTodos();
     }
@@ -40,7 +40,7 @@ while (true)
     {
         RemoveAllTodos();
     }
-    else if(userOptSelected== "U")
+    else if (userOptSelected == "U")
     {
         UpdateTodo();
     }
