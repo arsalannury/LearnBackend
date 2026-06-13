@@ -1,23 +1,24 @@
-﻿string starterTitle = "Press S if you want to start application and Press Q if you want go to settings";
-
-string appMain = "Enter your suggestion letters to add to the archive";
-string helperText = "Yo can enter 1 or 2 instead of enter letters";
-
-string[] options = new string[2] { "1- Remove all letters", "2- Show all letters" };
+﻿string[] options = new string[2] { "1- Remove all letters", "2- Show all letters" };
 List<string> letters = new List<string>();
 
 do
 {
-    Console.WriteLine(starterTitle);
+    Console.WriteLine("Press S if you want to start application and Press Q if you want go to settings");
+
+    //Console.WriteLine("Press ESC if you want to close the applicaton");
+    //bool mustEnd = Console.ReadKey().Key == ConsoleKey.Escape;
+    //if (mustEnd) return;
 
     string appType = Console.ReadLine() ?? "";
     bool isAppTypeChar = char.TryParse(appType, out char result);
-    
+
+    // TODO should check case 
     if (isAppTypeChar)
     {
         if (result.Equals('s'))
         {
             MainApplication();
+            continue;
         }
         else if (result.Equals('q'))
         {
@@ -30,9 +31,10 @@ do
 
 // helper methods to work with main app
 
+
 void SettingApplication()
 {
-    Console.WriteLine(helperText);
+    Console.WriteLine("You can enter 1 or 2 instead of enter letters");
     foreach (string item in options)
     {
         Console.WriteLine(item);
@@ -71,7 +73,6 @@ void MainApplication()
     if (userSuggestion == string.Empty || userSuggestion.Length > 50)
     {
         Console.Clear();
-        //continue;
         return;
     }
 
@@ -79,21 +80,18 @@ void MainApplication()
     if (duplicateLetterIndex != -1)
     {
         Console.WriteLine("You can not add duplicated letters, try another one");
-        //continue;
         return;
     }
 
     // add to list with convert all word to lower -> A TEST TExt will be a test text
     letters.Add(userSuggestion.ToLower());
-    Console.WriteLine("The item added successfully ✔✔✔🤞");
-    //continue;
-    return;
+    Console.WriteLine("The item added successfully");
 }
 
 void StarterLogger()
 {
     Console.WriteLine("- - - - - - - - - - - - - - - - ");
-    Console.WriteLine(appMain);
+    Console.WriteLine("Enter your suggestion letters to add to the archive");
     Console.WriteLine("- - - - - - - - - - - - - - - - ");
     Console.WriteLine("\n");
 }
