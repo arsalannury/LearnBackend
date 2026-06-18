@@ -11,7 +11,7 @@
         public void CalculateSum(Int32 x , Int32 y)
         {
             Console.WriteLine($"{x} {y}");
-        };
+        }
 
     }
 }
