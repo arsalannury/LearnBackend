@@ -1,29 +1,51 @@
-﻿namespace BackApp
+﻿string name;
+name = "Arsalan";
+
+string Name;
+Name = name;
+
+string @class = "A2";
+
+string @namespace = "BackApp"; // -> var @namespace = "BackApp";
+//var variable; ---> An implicitly typed local variable must be initialized
+
+//Console.WriteLine(@class);
+//Console.WriteLine(name);
+//Console.WriteLine(Name);
+//Console.WriteLine("Subscription:" + 10 * 2);
+//Console.WriteLine("Subscription:" + 10 + 2);
+//Console.WriteLine("Subscription:" + (10 + 2));
+
+//Test();
+void Test()
 {
-    internal class Program
+    Console.WriteLine("TTTTest");
+}
+
+
+string SwitchExpression(int arg)
+{
+   return arg switch
     {
-        static void Main(string[] args)
-        {
-            Console.WriteLine("Hello World From OOP!");
+        <= 0 => $"Ilegall age: {arg}",
+        <= 10 and > 0 => $"We prefer to don't accept: {arg}",
+        <= 50 and > 10 => $"We prefer to accept with some warnings: {arg}",
+        <= 100 and > 50 => $"We proud to accept some one like you: {arg}",
+        _ => "Pass age",
+    };
+}
 
-            var calculator = new Calculator("+");
-            calculator.SumNumbers(101, 102, 103);
-        }
+string resultOfExpression = SwitchExpression(90);
+//Console.WriteLine(resultOfExpression);
 
-    }
 
-    class Calculator
+char BloodGroup(int intiGen)
+{
+    return intiGen switch
     {
-
-        private readonly string _operatorName = "+";
-
-        public Calculator(string name)
-        {
-            _operatorName = name;
-        }
-
-        public int SumNumbers(int x, int y) => x + y;
-        public int SumNumbers(int x, int y, int z) => x + y + z;
-    }
-
+        > 0 and <= 5 => 'A',
+        > 5 and <= 10 => 'B',
+        > 10 and <= 15 => 'O',
+        _ => 'N',
+    };
 }
