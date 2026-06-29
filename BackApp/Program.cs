@@ -1,4 +1,13 @@
-﻿/*
+﻿/*List<bool> flags = new List<bool>();
+int[] numbers = {};
+int[] numbers2 = new int[3] { 1, 2, 3 };
+
+
+flags[1] = true;*/
+
+
+
+/*
 Console.WriteLine("Please enter a valid number:");
 Console.WriteLine("");
 
@@ -25,7 +34,7 @@ foreach(char c in bloodGroups)
     Console.Write($"{c} {check} ");
 }*/
 
-string[,] square = new string[2, 3]
+/*string[,] square = new string[2, 3]
 {
     {"Mohammad","Fatemeh","Ali" },
     {"Hasan","Hossein","Sajad"}
@@ -44,4 +53,32 @@ for (int i = 0; i < square.GetLength(0); i++)
             Console.WriteLine("");
         }
     }
-}
+}*/
+
+
+/*List<int> randomNumbers = new List<int>();
+
+while (true)
+{
+    Console.WriteLine("Please enter a random number:");
+    string randNumb = Console.ReadLine() ?? string.Empty;
+
+    bool canParseUserInput = int.TryParse(randNumb, out int result);
+
+    if (canParseUserInput)
+    {
+        randomNumbers.Add(result);
+        Console.WriteLine("Random number added successfully !!");
+        continue;
+    }
+
+    Console.WriteLine("Please enter valid numbers beetwen 0 to infinite");
+    Console.WriteLine("");
+    continue;
+
+}*/
+
+
+
+
+
