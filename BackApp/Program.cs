@@ -1,97 +1,105 @@
-﻿string[] options = new string[2] { "1- Remove all letters", "2- Show all letters" };
-List<string> letters = new List<string>();
+﻿var earth = new World();
+var result = earth.ValidCountry("Yemen");
 
-do
+Console.WriteLine(result.countryName);
+Console.WriteLine(result.continentName);
+
+
+class World
 {
-    Console.WriteLine("Press S if you want to start application and Press Q if you want go to settings");
-
-    //Console.WriteLine("Press ESC if you want to close the applicaton");
-    //bool mustEnd = Console.ReadKey().Key == ConsoleKey.Escape;
-    //if (mustEnd) return;
-
-    string appType = Console.ReadLine() ?? "";
-    bool isAppTypeChar = char.TryParse(appType, out char result);
-
-    // TODO should check case 
-    if (isAppTypeChar)
+    List<string> _continents = new List<string> { "Asia", "Europe", "Africa", "America", "Austrlia" };
+    public int countryCounts = 290;
+    public long worldAge = 10000000000000000;
+    List<CountryInfo> _countries = new List<CountryInfo>
     {
-        if (result.Equals('s'))
-        {
-            MainApplication();
-            continue;
-        }
-        else if (result.Equals('q'))
-        {
-            SettingApplication();
-        }
+    new CountryInfo("Afghanistan", "Asia"),
+    new CountryInfo("Albania", "Europe"),
+    new CountryInfo("Algeria", "Africa"),
+    new CountryInfo("Argentina", "South America"),
+    new CountryInfo("Australia", "Australia"),
+    new CountryInfo("Austria", "Europe"),
+    new CountryInfo("Azerbaijan", "Asia"),
+    new CountryInfo("Bahrain", "Asia"),
+    new CountryInfo("Bangladesh", "Asia"),
+    new CountryInfo("Belgium", "Europe"),
+    new CountryInfo("Brazil", "South America"),
+    new CountryInfo("Bulgaria", "Europe"),
+    new CountryInfo("Canada", "North America"),
+    new CountryInfo("Chile", "South America"),
+    new CountryInfo("China", "Asia"),
+    new CountryInfo("Colombia", "South America"),
+    new CountryInfo("Croatia", "Europe"),
+    new CountryInfo("Czech Republic", "Europe"),
+    new CountryInfo("Denmark", "Europe"),
+    new CountryInfo("Egypt", "Africa"),
+    new CountryInfo("Finland", "Europe"),
+    new CountryInfo("France", "Europe"),
+    new CountryInfo("Germany", "Europe"),
+    new CountryInfo("Greece", "Europe"),
+    new CountryInfo("Hungary", "Europe"),
+    new CountryInfo("India", "Asia"),
+    new CountryInfo("Indonesia", "Asia"),
+    new CountryInfo("Iran", "Asia"),
+    new CountryInfo("Iraq", "Asia"),
+    new CountryInfo("Ireland", "Europe"),
+    new CountryInfo("Italy", "Europe"),
+    new CountryInfo("Japan", "Asia"),
+    new CountryInfo("Kazakhstan", "Asia"),
+    new CountryInfo("Kenya", "Africa"),
+    new CountryInfo("Malaysia", "Asia"),
+    new CountryInfo("Mexico", "North America"),
+    new CountryInfo("Morocco", "Africa"),
+    new CountryInfo("Netherlands", "Europe"),
+    new CountryInfo("New Zealand", "Australia"),
+    new CountryInfo("Nigeria", "Africa"),
+    new CountryInfo("Norway", "Europe"),
+    new CountryInfo("Pakistan", "Asia"),
+    new CountryInfo("Peru", "South America"),
+    new CountryInfo("Poland", "Europe"),
+    new CountryInfo("Portugal", "Europe"),
+    new CountryInfo("Qatar", "Asia"),
+    new CountryInfo("Romania", "Europe"),
+    new CountryInfo("Russia", "Europe/Asia"),
+    new CountryInfo("Saudi Arabia", "Asia"),
+    new CountryInfo("Singapore", "Asia"),
+    new CountryInfo("South Africa", "Africa"),
+    new CountryInfo("South Korea", "Asia"),
+    new CountryInfo("Spain", "Europe"),
+    new CountryInfo("Sweden", "Europe"),
+    new CountryInfo("Switzerland", "Europe"),
+    new CountryInfo("Thailand", "Asia"),
+    new CountryInfo("Turkey", "Europe/Asia"),
+    new CountryInfo("Ukraine", "Europe"),
+    new CountryInfo("United Arab Emirates", "Asia"),
+    new CountryInfo("United Kingdom", "Europe"),
+    new CountryInfo("United States", "North America"),
+    new CountryInfo("Uruguay", "South America"),
+    new CountryInfo("Venezuela", "South America"),
+    new CountryInfo("Vietnam", "Asia"),
+    new CountryInfo("Yemen", "Asia"),
+    new CountryInfo("Zimbabwe", "Africa")
+    };
+
+    public List<string> GetContinents()
+    {
+        return _continents;
     }
 
-} while (true);
+    public CountryInfo ValidCountry(string name) => _countries.Find(country => country.countryName == name) ?? new CountryInfo("None", "None");
 
 
-// helper methods to work with main app
-
-
-void SettingApplication()
-{
-    Console.WriteLine("You can enter 1 or 2 instead of enter letters");
-    foreach (string item in options)
-    {
-        Console.WriteLine(item);
-    }
-
-    string settingOption = Console.ReadLine() ?? string.Empty;
-    bool isSettingOptionValid = int.TryParse(settingOption, out int result);
-    if (isSettingOptionValid)
-    {
-        if (result == 1)
-        {
-            letters.Clear();
-            Console.WriteLine("All letters removed successfully");
-        }
-        else if (result == 2)
-        {
-            foreach (string item in letters)
-            {
-                Console.WriteLine(item);
-            }
-        }
-    }
 }
 
-void MainApplication()
+class CountryInfo
 {
-    StarterLogger();
 
-    // get input from user
-    string userSuggestion = Console.ReadLine() ?? string.Empty;
-    string userSuggestionForCheck = userSuggestion.Replace(" ", string.Empty).ToLower();
+    public string countryName;
+    public string continentName;
 
-    int duplicateLetterIndex = letters.FindIndex(lett => lett.Replace(" ", string.Empty) == userSuggestionForCheck);
-
-    // should pass the fill string or the string under the 50 length
-    if (userSuggestion == string.Empty || userSuggestion.Length > 50)
+    public CountryInfo(string name, string continent)
     {
-        Console.Clear();
-        return;
+        countryName = name;
+        continentName = continent;
     }
 
-    // letters and characters can not be duplicate
-    if (duplicateLetterIndex != -1)
-    {
-        Console.WriteLine("You can not add duplicated letters, try another one");
-        return;
-    }
-
-    // add to list with convert all word to lower -> A TEST TExt will be a test text
-    letters.Add(userSuggestion.ToLower());
-    Console.WriteLine("The item added successfully");
-}
-
-void StarterLogger()
-{
-    Console.WriteLine("- - - - - - - - - - - - - - - - ");
-    Console.WriteLine("Enter your suggestion letters to add to the archive");
-    Console.WriteLine("- - - - - - - - - - - - - - - - ");
-    Console.WriteLine("\n");
 }
