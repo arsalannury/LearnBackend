@@ -1,105 +1,75 @@
-﻿var earth = new World();
-var result = earth.ValidCountry("Yemen");
+﻿// Hang Man Game
 
-Console.WriteLine(result.countryName);
-Console.WriteLine(result.continentName);
-
-
-class World
+namespace BackApp
 {
-    List<string> _continents = new List<string> { "Asia", "Europe", "Africa", "America", "Austrlia" };
-    public int countryCounts = 290;
-    public long worldAge = 10000000000000000;
-    List<CountryInfo> _countries = new List<CountryInfo>
+    internal class Program
     {
-    new CountryInfo("Afghanistan", "Asia"),
-    new CountryInfo("Albania", "Europe"),
-    new CountryInfo("Algeria", "Africa"),
-    new CountryInfo("Argentina", "South America"),
-    new CountryInfo("Australia", "Australia"),
-    new CountryInfo("Austria", "Europe"),
-    new CountryInfo("Azerbaijan", "Asia"),
-    new CountryInfo("Bahrain", "Asia"),
-    new CountryInfo("Bangladesh", "Asia"),
-    new CountryInfo("Belgium", "Europe"),
-    new CountryInfo("Brazil", "South America"),
-    new CountryInfo("Bulgaria", "Europe"),
-    new CountryInfo("Canada", "North America"),
-    new CountryInfo("Chile", "South America"),
-    new CountryInfo("China", "Asia"),
-    new CountryInfo("Colombia", "South America"),
-    new CountryInfo("Croatia", "Europe"),
-    new CountryInfo("Czech Republic", "Europe"),
-    new CountryInfo("Denmark", "Europe"),
-    new CountryInfo("Egypt", "Africa"),
-    new CountryInfo("Finland", "Europe"),
-    new CountryInfo("France", "Europe"),
-    new CountryInfo("Germany", "Europe"),
-    new CountryInfo("Greece", "Europe"),
-    new CountryInfo("Hungary", "Europe"),
-    new CountryInfo("India", "Asia"),
-    new CountryInfo("Indonesia", "Asia"),
-    new CountryInfo("Iran", "Asia"),
-    new CountryInfo("Iraq", "Asia"),
-    new CountryInfo("Ireland", "Europe"),
-    new CountryInfo("Italy", "Europe"),
-    new CountryInfo("Japan", "Asia"),
-    new CountryInfo("Kazakhstan", "Asia"),
-    new CountryInfo("Kenya", "Africa"),
-    new CountryInfo("Malaysia", "Asia"),
-    new CountryInfo("Mexico", "North America"),
-    new CountryInfo("Morocco", "Africa"),
-    new CountryInfo("Netherlands", "Europe"),
-    new CountryInfo("New Zealand", "Australia"),
-    new CountryInfo("Nigeria", "Africa"),
-    new CountryInfo("Norway", "Europe"),
-    new CountryInfo("Pakistan", "Asia"),
-    new CountryInfo("Peru", "South America"),
-    new CountryInfo("Poland", "Europe"),
-    new CountryInfo("Portugal", "Europe"),
-    new CountryInfo("Qatar", "Asia"),
-    new CountryInfo("Romania", "Europe"),
-    new CountryInfo("Russia", "Europe/Asia"),
-    new CountryInfo("Saudi Arabia", "Asia"),
-    new CountryInfo("Singapore", "Asia"),
-    new CountryInfo("South Africa", "Africa"),
-    new CountryInfo("South Korea", "Asia"),
-    new CountryInfo("Spain", "Europe"),
-    new CountryInfo("Sweden", "Europe"),
-    new CountryInfo("Switzerland", "Europe"),
-    new CountryInfo("Thailand", "Asia"),
-    new CountryInfo("Turkey", "Europe/Asia"),
-    new CountryInfo("Ukraine", "Europe"),
-    new CountryInfo("United Arab Emirates", "Asia"),
-    new CountryInfo("United Kingdom", "Europe"),
-    new CountryInfo("United States", "North America"),
-    new CountryInfo("Uruguay", "South America"),
-    new CountryInfo("Venezuela", "South America"),
-    new CountryInfo("Vietnam", "Asia"),
-    new CountryInfo("Yemen", "Asia"),
-    new CountryInfo("Zimbabwe", "Africa")
-    };
+        static string[] _wordsToGuess = new string[] { "America", "Visual", "Tehran", "Stomatch", "Notebook", "NewsPaper", "Monitor" };
+        static string _appStarterTitle = "Welcome to the hangMan game!. we will select a word and we will tell you the first letter, what should you do?" +
+            "you only need to guess other charachters one after one until the word be complete! Good Luck my friend ";
 
-    public List<string> GetContinents()
-    {
-        return _continents;
+        static string randomWord;
+        static List<string> guessedWordChars = new List<string>();
+
+        static void Main(string[] args)
+        {
+            Console.WriteLine(_appStarterTitle);
+            Console.WriteLine("Please press Enter to start the game");
+
+            ConsoleKeyInfo currentKey = Console.ReadKey();
+
+            if (currentKey.Key == ConsoleKey.Enter)
+            {
+                while (true)
+                {
+
+                    Random randomIndex = new Random();
+                    randomWord = _wordsToGuess[randomIndex.Next(0, _wordsToGuess.Length)];
+                    guessedWordChars.Add(randomWord[0].ToString());
+
+                    Console.WriteLine($"The first letter of what you must guess is {randomWord[0]}");
+                    Console.WriteLine("Start to guess then you will win the match !!!");
+                    Console.WriteLine("");
+
+                    while (true)
+                    {
+
+                        string userInput = Console.ReadLine() ?? string.Empty;
+                        bool calculateCondtionBaseLetters = char.Parse(userInput) == (guessedWordChars.Count == 1 ? randomWord[1] : randomWord[guessedWordChars.Count]);
+
+                        if (userInput.Replace(" ", "").Length == 1 && calculateCondtionBaseLetters)
+                        {
+
+                            guessedWordChars.Add(userInput.Replace(" ", "").ToUpper());
+                            bool isWordCompleted = string.Join("", guessedWordChars).Length == randomWord.Length;
+
+                            Console.WriteLine($"{string.Join("", guessedWordChars).Length} - {string.Join("", guessedWordChars)}");
+                            Console.WriteLine($"{randomWord.Length} - {randomWord}");
+
+                            if (isWordCompleted)
+                            {
+                                Console.WriteLine($"Congradulation User ! you won , the complete word is - {randomWord} -");
+                                guessedWordChars.Clear();
+                                break;
+
+                            }
+
+                            Console.WriteLine("Good Job! let's guess another word :)");
+                            continue;
+                        }
+                        else
+                        {
+                            Console.WriteLine("Something Went Wrong !!");
+                            guessedWordChars.Clear();
+                            break;
+                        }
+
+                    }
+                }
+
+            }
+
+        }
+
     }
-
-    public CountryInfo ValidCountry(string name) => _countries.Find(country => country.countryName == name) ?? new CountryInfo("None", "None");
-
-
-}
-
-class CountryInfo
-{
-
-    public string countryName;
-    public string continentName;
-
-    public CountryInfo(string name, string continent)
-    {
-        countryName = name;
-        continentName = continent;
-    }
-
 }
