@@ -4,27 +4,41 @@
     {
         public static void Main(string[] args)
         {
-            Tank abraham = new Tank();
+            DateTime now = DateTime.Now;
+            var appointment = new Appointment(now, "Mohadeseh Sanaei Nezhad");
+            appointment.Reschedule(10);
+            Console.WriteLine($"{appointment.Date} - {appointment.Name} - {appointment.DoctorName}");
         }
     }
 
-    class Tank
+    class Appointment
     {
+        public DateTime Date;
+        public string Name;
+        public string DoctorName;
 
-        public string Model;
-        public int YearBuild;
-
-        public Tank(string model, int yearBuld)
+        public Appointment(DateTime date, string name, string doctorName)
         {
-            Console.WriteLine("2");
-            Model = model;
-            YearBuild = yearBuld;
+            Date = date;
+            Name = name;
+            DoctorName = doctorName;
         }
 
-        public Tank() : this("Abraham", 1992)
+        public Appointment(DateTime date, string name) : this(date, name, "Arsalan Nury")
         {
-            Console.WriteLine("1");
-            YearBuild = 0;
+            Date = date;
+            Name = name;
+        }
+
+        public void Reschedule(int addDays, string name)
+        {
+            Date = Date.AddDays(addDays);
+            Name = name;
+        }
+
+        public void Reschedule(int addDays)
+        {
+            Date = Date.AddDays(addDays);
         }
     }
 }
