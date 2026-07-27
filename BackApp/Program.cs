@@ -4,27 +4,44 @@
     {
         public static void Main(string[] args)
         {
-           
+            var smartPhone = new SmartPhone("Xiaomi Redmi Note 13 Pro", 2025);
+            Console.WriteLine(smartPhone);
         }
     }
 
-    class Holding
+    class SmartPhone
     {
-        public void Members(Company company)
-        {
-            Console.WriteLine(company.Name);
-        }
-    }
+        public string Name;
+        public int PublishYear;
+        public int PublishMonth;
+        public string Color;
+        public string Ram;
+        public string Storage;
 
-    class Company
-    {
-        public string Name = "DigiKala";
-
-        public void CompnayRoot()
+        public SmartPhone(
+            string name = "Iphone 17 ProMax",
+            int publishYear = 2025,
+            int publishMonth = 9,
+            string color = "Black",
+            string ram = "12",
+            string storage = "1T")
         {
-            var holding = new Holding();
-            holding.Members(this);
+            Console.WriteLine('1');
+            Name = name;
+            PublishYear = publishYear;
+            PublishMonth = publishMonth;
+            Color = color;
+            Ram = ram;
+            Storage = storage;
+
         }
+
+        public SmartPhone(string name)
+        {
+            Console.WriteLine('2');
+            Name = name;
+        }
+
     }
 
 }
