@@ -4,7 +4,7 @@
     {
         public static void Main(string[] args)
         {
-            var smartPhone = new SmartPhone("Xiaomi Redmi Note 13 Pro", 2025);
+            var smartPhone = new SmartPhone();
             Console.WriteLine(smartPhone);
         }
     }
