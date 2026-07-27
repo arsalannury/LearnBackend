@@ -5,10 +5,10 @@
         public static void Main(string[] args)
         {
             var russianGun = new Wepeon("AK 47");
-            russianGun.GetSummaryWepeon();
+            Console.WriteLine(russianGun.GetSummaryWepeon());
 
             var m4Gun = new Wepeon("M4 Tactic", 1954);
-            m4Gun.GetSummaryWepeon();
+            Console.WriteLine(m4Gun.GetSummaryWepeon());
         }
     }
 
@@ -43,10 +43,7 @@
             _name = name;
         }
 
-        public void GetSummaryWepeon()
-        {
-            Console.WriteLine($"{_name} - {_yearOfBuild}");
-        }
+        public string GetSummaryWepeon() => $"{_name} - {_yearOfBuild}";
     }
 
 }
