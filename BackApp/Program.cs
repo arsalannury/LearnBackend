@@ -4,7 +4,7 @@
     {
         public static void Main(string[] args)
         {
-            var smartPhone = new SmartPhone();
+            var smartPhone = new SmartPhone("Honor X7","Black",12345);
             Console.WriteLine(smartPhone);
         }
     }
@@ -12,34 +12,54 @@
     class SmartPhone
     {
         public string Name;
-        public int PublishYear;
-        public int PublishMonth;
         public string Color;
-        public string Ram;
-        public string Storage;
+        public int Storage;
 
         public SmartPhone(
-            string name = "Iphone 17 ProMax",
-            int publishYear = 2025,
-            int publishMonth = 9,
-            string color = "Black",
-            string ram = "12",
-            string storage = "1T")
+            string name,
+            string color,
+            int storage)
         {
-            Console.WriteLine('1');
+
+            string messageValidation = ValidateParameters(name, nameof(Name), out bool isValid);
+
+            if (!isValid)
+            {
+                Console.WriteLine(messageValidation);
+                return;
+            }
+
             Name = name;
-            PublishYear = publishYear;
-            PublishMonth = publishMonth;
             Color = color;
-            Ram = ram;
             Storage = storage;
 
         }
 
-        public SmartPhone(string name)
+        string ValidateParameters(string fieldValue, string fieldName, out bool isValid)
         {
-            Console.WriteLine('2');
-            Name = name;
+
+            isValid = true;
+
+            if (fieldName == nameof(Name) && fieldValue.Length < 10)
+            {
+                isValid = false;
+                return "The name must be more than 10 character";
+            }
+
+            if (fieldName == nameof(Color) && fieldValue.Length < 6 && !fieldValue.StartsWith('#'))
+            {
+                isValid = false;
+                return "The color must be in hex format . for example #000000";
+            }
+
+            if (fieldName == nameof(Storage) && fieldValue.Length > 3)
+            {
+                isValid = false;
+                return "The storage must be in valid storage like 128 256 1";
+            }
+
+            return "";
+
         }
 
     }
