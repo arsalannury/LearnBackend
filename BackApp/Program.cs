@@ -1,8 +1,5 @@
-﻿int calculated = 2;
+﻿string firstName, lastName, fullName;
 
-void Calculate()
-{
-    Console.WriteLine(calculated * 2);
-}
-
-Calculate();
+firstName = "Arsalan";
+lastName = "Nury";
+fullName = firstName+ " " + lastName;
