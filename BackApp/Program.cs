@@ -1,5 +1,9 @@
-﻿string firstName, lastName, fullName;
+﻿//Int16 2Number; 
+//Int16 two-number;
+//Int16 class;
+//Int16 -two;
 
-firstName = "Arsalan";
-lastName = "Nury";
-fullName = firstName+ " " + lastName;
+
+//string @class; ✔
+//string two2Number;✔
+//string twoNumber; ✔
