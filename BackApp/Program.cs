@@ -1,4 +1,4 @@
-﻿int calculated;
+﻿int calculated = 2;
 
 void Calculate()
 {
