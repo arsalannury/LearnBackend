@@ -1,9 +1,5 @@
-﻿int first = 100;
-int second = 101;
-
-//Console.WriteLine("The result is:" + (first+second));
-//Console.WriteLine("The result is:" + first - second);
-//Console.WriteLine("The result is:" + (first - second));
-
-//Console.WriteLine("The result is:" + second / first);
-//Console.WriteLine("The result is:" + second * first);
+﻿//string window = "Window Section";
+var window = "Window Section";
+var result = "The result is" + 20 * 20;
+Console.WriteLine(result);
+Console.WriteLine(result is string);
