@@ -1,8 +1,25 @@
-﻿string OutputOriganizer(string command)
+﻿bool CanStudentStartNewSession(double grade, out string schoolMessage)
 {
-    return $"User typed a command in terminal with following details: {command}";
+    schoolMessage = string.Empty;
+    bool res = false;
+
+    switch (grade)
+    {
+        case <= 9.5:
+            schoolMessage = "You must be better than what you are now. the life is too hard";
+            res = false;
+            break;
+        case > 9.5:
+            schoolMessage = "Congratulations student! you did the best";
+            res = true;
+            break;
+        default:
+            res = false;
+            break;
+    }
+
+    return res;
 }
 
-
-var userOut = OutputOriganizer("remove old applications from your system");
-Console.WriteLine(userOut);
+bool checkArsalan = CanStudentStartNewSession(8, out string message);
+Console.WriteLine(message);
