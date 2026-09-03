@@ -1,34 +1,42 @@
-﻿Console.WriteLine("Pick a number from 1 to 20:");
+﻿
+Console.WriteLine("Enter a year to see minimum of born people at the result:");
+Console.WriteLine("");
 
-var input = Console.ReadLine();
-var isInputValidNumber = int.TryParse(input,out int parsedInput);
+string terminal = Console.ReadLine();
+bool isCommandNumber = int.TryParse(terminal, out int commandNumber);
 
-
-if(isInputValidNumber)
+if (isCommandNumber)
 {
-    var result = parsedInput switch
+    var currentYear = DateTime.Now.Year;
+
+    switch (commandNumber)
     {
-        > 0 and < 10 => "Not enough to pass exam",
-        >= 10 and <= 15 => "Enough to pass exam but should be better than this :(",
-        >= 16 and <= 20 => "Congratulations! you did the best",
-        _ => "We can't recongnize what you have in this exam",
-    }; 
-}
-
-/*if(isInputValidNumber)
-{
-    switch (parsedInput) {
-        case >= 1 and <= 9:
-            Console.WriteLine("Not enough to pass exam");
+        case >= 1900 and <= 1930:
+            Console.WriteLine("The minimum is 467000");
             break;
-        case > 10 and <= 15:
-            Console.WriteLine("Enough to pass exam but should be better than this :(");
+        case >= 1931 and <= 1960:
+            Console.WriteLine("The minimum is 29900");
             break;
-        case >= 16 and <= 20:
-            Console.WriteLine("Congratulations! you did the best");
+        case >= 1961 and <= 1990:
+            Console.WriteLine("The minimum is 52200");
+            break;
+        case >= 1991 and <= 2026:
+            Console.WriteLine("The minimum is 2000000");
             break;
         default:
-            Console.WriteLine("We can't recongnize what you have in this exam");
+            Console.WriteLine($"Enter a year between 1900 to {new DateTime().Year}");
             break;
     }
-}*/
+
+    string conditionalCommand = commandNumber switch
+    {
+        >= 1900 and <= 1930 => "The minimum is 467000",
+        >= 1931 and <= 1960 => "The minimum is 29900",
+        >= 1961 and <= 1990 => "The minimum is 52200",
+        >= 1991 and <= 2026 => "The minimum is 2000000",
+        _ => $"Enter a year between 1900 to {new DateTime().Year}",
+    };
+
+}
+
+
