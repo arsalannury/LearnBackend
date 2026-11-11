@@ -51,16 +51,19 @@ int b = 25;
 // var token = "token name";
 // string userCommand = Console.ReadLine() ?? string.Empty;
 
-bool isUserAdmin = true;
-var condition = false;
+// bool isUserAdmin = true;
+// var condition = false;
 
 
-if (isUserAdmin)
-{
-    Console.WriteLine("Welcome Admin User. Enjoy of your power");
-}
-else
-{
-    condition = true;
-    Console.WriteLine("You are not admin. login as normal user");
-}
+// if (isUserAdmin)
+// {
+//     Console.WriteLine("Welcome Admin User. Enjoy of your power");
+// }
+// else
+// {
+//     condition = true;
+//     Console.WriteLine("You are not admin. login as normal user");
+// }
+
+// string content = $"my content is {20 + 2 + 2 + 1}";
+// Console.WriteLine(content);
