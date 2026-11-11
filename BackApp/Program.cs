@@ -68,28 +68,69 @@ int b = 25;
 // string content = $"my content is {20 + 2 + 2 + 1}";
 // Console.WriteLine(content);
 
-Console.WriteLine("Choose an option from list below");
-string userChoice = Console.ReadLine();
-bool canCanvertChoice = int.TryParse(userChoice,out int choiceNumber);
+// Console.WriteLine("Choose an option from list below");
+// string userChoice = Console.ReadLine();
+// bool canCanvertChoice = int.TryParse(userChoice,out int choiceNumber);
 
-if(canCanvertChoice)
+// if(canCanvertChoice)
+// {
+//     switch (choiceNumber)
+// {
+//         case 1:
+//             Console.WriteLine("1 is wrong");
+//             break;
+//         case 2:
+//             Console.WriteLine("2 is wrong");
+//             break;
+//         case 3:
+//             Console.WriteLine("3 is correct");
+//             break;
+//         default:
+//             Console.WriteLine("Please enter numbers between 1 to 3");
+//             break;
+// }
+// }else
+// {
+//     Console.WriteLine("Please enter a valid number");
+// }
+
+Console.WriteLine("Choose one option below to see what is waiting for you:");
+Console.WriteLine('A');
+Console.WriteLine('B');
+Console.WriteLine('C');
+Console.WriteLine('D');
+Console.WriteLine('E');
+Console.WriteLine('F');
+
+
+string userInput = Console.ReadLine();
+bool parsedInput = int.TryParse(userInput, out int parsed);
+
+string Calculate()
 {
-    switch (choiceNumber)
-{
-        case 1:
-            Console.WriteLine("1 is wrong");
-            break;
-        case 2:
-            Console.WriteLine("2 is wrong");
-            break;
-        case 3:
-            Console.WriteLine("3 is correct");
-            break;
-        default:
-            Console.WriteLine("Please enter numbers between 1 to 3");
-            break;
+    if (!parsedInput && parsed == 0)
+    {
+        return userInput switch
+        {
+            "A" or "B" => "You have a bounes 1000$",
+            "C" => "You have a 20$ bounes",
+            "D" => "You have a 1$ bounes",
+            "F" or "E" => "You have a 12000$ bounes",
+            _ => "You don't have a bounes for now ",
+        };
+    }
+
+    return "Please enter valid value";
 }
-}else
+
+Console.WriteLine();
+Console.WriteLine(Calculate());
+
+
+string matching = userInput switch
 {
-    Console.WriteLine("Please enter a valid number");
-}
+    "A" or "B" => "You have a bounes 1000$",
+    "C" => "You have a 20$ bounes",
+    "D" => "You have a 1$ bounes",
+    _ => "You don't have a bounes for now ",
+};
