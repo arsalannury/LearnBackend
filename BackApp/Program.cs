@@ -94,43 +94,45 @@ int b = 25;
 //     Console.WriteLine("Please enter a valid number");
 // }
 
-Console.WriteLine("Choose one option below to see what is waiting for you:");
-Console.WriteLine('A');
-Console.WriteLine('B');
-Console.WriteLine('C');
-Console.WriteLine('D');
-Console.WriteLine('E');
-Console.WriteLine('F');
+// Console.WriteLine("Choose one option below to see what is waiting for you:");
+// Console.WriteLine('A');
+// Console.WriteLine('B');
+// Console.WriteLine('C');
+// Console.WriteLine('D');
+// Console.WriteLine('E');
+// Console.WriteLine('F');
 
 
-string userInput = Console.ReadLine();
-bool parsedInput = int.TryParse(userInput, out int parsed);
+// string userInput = Console.ReadLine();
+// bool parsedInput = int.TryParse(userInput, out int parsed);
 
-string Calculate()
-{
-    if (!parsedInput && parsed == 0)
-    {
-        return userInput switch
-        {
-            "A" or "B" => "You have a bounes 1000$",
-            "C" => "You have a 20$ bounes",
-            "D" => "You have a 1$ bounes",
-            "F" or "E" => "You have a 12000$ bounes",
-            _ => "You don't have a bounes for now ",
-        };
-    }
+// string Calculate()
+// {
+//     if (!parsedInput && parsed == 0)
+//     {
+//         return userInput switch
+//         {
+//             "A" or "B" => "You have a bounes 1000$",
+//             "C" => "You have a 20$ bounes",
+//             "D" => "You have a 1$ bounes",
+//             "F" or "E" => "You have a 12000$ bounes",
+//             _ => "You don't have a bounes for now ",
+//         };
+//     }
 
-    return "Please enter valid value";
-}
+//     return "Please enter valid value";
+// }
 
-Console.WriteLine();
-Console.WriteLine(Calculate());
+// Console.WriteLine();
+// Console.WriteLine(Calculate());
 
 
-string matching = userInput switch
-{
-    "A" or "B" => "You have a bounes 1000$",
-    "C" => "You have a 20$ bounes",
-    "D" => "You have a 1$ bounes",
-    _ => "You don't have a bounes for now ",
-};
+// string matching = userInput switch
+// {
+//     "A" or "B" => "You have a bounes 1000$",
+//     "C" => "You have a 20$ bounes",
+//     "D" => "You have a 1$ bounes",
+//     _ => "You don't have a bounes for now ",
+// };
+
+
