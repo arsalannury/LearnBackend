@@ -135,4 +135,11 @@ int b = 25;
 //     _ => "You don't have a bounes for now ",
 // };
 
+int number = 0;
 
+while (number <= 10)
+{
+    Console.Write($"{number}  -  ");
+    number++;
+
+}
