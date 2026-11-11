@@ -67,3 +67,29 @@ int b = 25;
 
 // string content = $"my content is {20 + 2 + 2 + 1}";
 // Console.WriteLine(content);
+
+Console.WriteLine("Choose an option from list below");
+string userChoice = Console.ReadLine();
+bool canCanvertChoice = int.TryParse(userChoice,out int choiceNumber);
+
+if(canCanvertChoice)
+{
+    switch (choiceNumber)
+{
+        case 1:
+            Console.WriteLine("1 is wrong");
+            break;
+        case 2:
+            Console.WriteLine("2 is wrong");
+            break;
+        case 3:
+            Console.WriteLine("3 is correct");
+            break;
+        default:
+            Console.WriteLine("Please enter numbers between 1 to 3");
+            break;
+}
+}else
+{
+    Console.WriteLine("Please enter a valid number");
+}
