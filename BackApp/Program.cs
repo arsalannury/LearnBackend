@@ -140,6 +140,5 @@ int number = 0;
 while (number <= 10)
 {
     Console.Write($"{number}  -  ");
-    number++;
-
+    number++;  
 }
