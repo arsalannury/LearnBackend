@@ -135,10 +135,62 @@ int b = 25;
 //     _ => "You don't have a bounes for now ",
 // };
 
-int number = 0;
+// int number = 0;
 
-while (number <= 10)
+// while (number <= 10)
+// {
+//     Console.Write($"{number}  -  ");
+//     number++;  
+// }
+
+// string userInput = Console.ReadLine() ?? string.Empty;
+
+// do
+// {
+//     Console.WriteLine("Hello");
+// } while (userInput.Trim().Length >= 5);
+
+
+// for(var i = 0; i<= 10; i++)
+// {
+//     Console.Write($"({i})");
+// }
+
+
+
+while(true)
 {
-    Console.Write($"{number}  -  ");
-    number++;  
+    Console.WriteLine("Choose a number between 1 to 5");
+    string input = Console.ReadLine();
+    bool isInputValidNumber = input.All(char.IsDigit);
+    if(isInputValidNumber)
+    {
+        switch(input)
+        {
+            case "1":
+                Console.WriteLine("You can always do the best things");
+                break;
+            case "2":
+                Console.WriteLine("Only god know what you passed behined in life");
+                break;
+            case "3":
+                Console.WriteLine("What is matter when your life will be ended at one moment");
+                break;
+            case "4":
+                Console.WriteLine("Do what people do");
+                break;
+            case "5":
+                Console.WriteLine("I will be there if you be there");
+                break;
+            default:
+                Console.WriteLine("BOOP");
+                break;    
+        }
+    }else
+    {
+        Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - - -");
+        Console.WriteLine("Please enter a valid number to continue");
+        Console.WriteLine("- - - - - - - - - - - - - - - - - - - - - - - - - - -");
+        continue;
+    }
 }
